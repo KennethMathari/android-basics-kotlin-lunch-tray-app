@@ -22,6 +22,16 @@
     tools:context=".ui.order.CheckoutFragment">
 
     <!-- TODO: Add the data binding variables of the type OrderViewModel and the CheckoutFragment -->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.lunchtray.model.OrderViewModel" />
+
+        <variable
+            name="checkoutFragment"
+            type="com.example.lunchtray.ui.order.CheckoutFragment" />
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -43,6 +53,7 @@
             <TextView
                 android:id="@+id/entree_selection"
                 style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
+                android:text='@{()->viewModel.entree.name}'
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/order_summary"
                 tools:text="Cauliflower" />
@@ -51,6 +62,7 @@
             <TextView
                 android:id="@+id/entree_price"
                 style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
+                android:text='@{()->viewModel.entree.price}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/entree_selection"
                 tools:text="$7.00"/>
@@ -59,6 +71,7 @@
             <TextView
                 android:id="@+id/side_selection"
                 style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
+                android:text='@{()->viewModel.side.name}'
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/entree_selection"
                 tools:text="Spicy Potatoes" />
@@ -67,6 +80,7 @@
             <TextView
                 android:id="@+id/side_price"
                 style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
+                android:text='@{()->viewModel.side.price}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/side_selection"
                 tools:text="$2.00"/>
@@ -75,6 +89,7 @@
             <TextView
                 android:id="@+id/accompaniment_selection"
                 style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
+                android:text='@{()->viewModel.accompaniment.name}'
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/side_selection"
                 tools:text="Mixed Berries" />
@@ -83,6 +98,7 @@
             <TextView
                 android:id="@+id/accompaniment_price"
                 style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
+                android:text='@{()->viewModel.accompaniment.price}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/accompaniment_selection"
                 tools:text="$1.00"/>
@@ -99,6 +115,7 @@
             <TextView
                 android:id="@+id/subtotal"
                 style="@style/Widget.LunchTray.TextView.Subtotal"
+                android:text='@{()->viewModel.subtotal}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 tools:text="Subtotal: $10.00"/>
@@ -107,6 +124,7 @@
             <TextView
                 android:id="@+id/tax"
                 style="@style/Widget.LunchTray.TextView.Subtotal"
+                android:text='@{()->viewModel.tax}'
                 android:layout_marginTop="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/subtotal"
@@ -119,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:textAllCaps="true"
                 android:textAppearance="?attr/textAppearanceHeadline6"
+                android:text='@{()->viewModel.total}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tax"
                 tools:text="Total: $10.73"/>
@@ -130,6 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/side_margin"
                 android:text="@string/submit"
+                android:onClick="@{()->checkoutFragment.submitOrder()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/total"/>
@@ -142,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin"
                 android:text="@string/cancel"
+                android:onClick="@{()->checkoutFragment.cancelOrder()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/submit_button"/>
