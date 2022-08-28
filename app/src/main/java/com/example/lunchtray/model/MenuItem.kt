@@ -32,3 +32,5 @@ data class MenuItem(
      */
     fun getFormattedPrice(): String = NumberFormat.getCurrencyInstance().format(price)
 }
+
+
